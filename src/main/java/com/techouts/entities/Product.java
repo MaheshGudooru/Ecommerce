@@ -1,0 +1,85 @@
+package com.techouts.entities;
+
+import com.techouts.utils.BaseEntityClass;
+import com.techouts.utils.enums.Category;
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "products")
+public class Product extends BaseEntityClass {
+
+    @Id
+    @GeneratedValue
+    private int id;
+
+    private String name;
+
+    private float price;
+
+    private int stock;
+
+    @Column(name = "product_description")
+    private String productDescription;
+
+    @Enumerated(EnumType.STRING)
+    private Category category;
+
+    @Column(name = "product_image")
+    private String productImage;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public float getPrice() {
+        return price;
+    }
+
+    public void setPrice(float price) {
+        this.price = price;
+    }
+
+    public int getStock() {
+        return stock;
+    }
+
+    public void setStock(int stock) {
+        this.stock = stock;
+    }
+
+    public String getProductDescription() {
+        return productDescription;
+    }
+
+    public void setProductDescription(String productDescription) {
+        this.productDescription = productDescription;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public String getProductImage() {
+        return productImage;
+    }
+
+    public void setProductImage(String productImage) {
+        this.productImage = productImage;
+    }
+}
