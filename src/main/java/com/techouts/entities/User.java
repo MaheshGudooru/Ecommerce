@@ -1,6 +1,6 @@
 package com.techouts.entities;
 
-import com.techouts.utils.BaseEntityClass;
+import com.techouts.utils.logging.BaseHibernateLogger;
 import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "users")
-public class User extends BaseEntityClass {
+public class User extends BaseHibernateLogger {
 
     @Id
     @GeneratedValue
@@ -28,8 +28,17 @@ public class User extends BaseEntityClass {
     @Column(name = "joined_date")
     private LocalDateTime joinedDate;
 
-    @OneToOne(mappedBy = "userId")
+    @OneToOne(mappedBy = "userId", cascade = CascadeType.ALL)
     private Cart cart;
+
+    public User(){}
+
+    public User(String name, String email, String password) {
+
+        this.name = name;
+        this.email = email;
+        this.password = password;
+    }
 
     public int getId() {
         return id;

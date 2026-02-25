@@ -1,25 +1,16 @@
 package com.techouts;
 
 import com.techouts.entities.User;
+import com.techouts.utils.hibernateutil.HibernateUtil;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
-import org.hibernate.query.Query;
 
 public class App
 {
     public static void main( String[] args )
     {
-        Configuration cfg = new Configuration ().configure ("hibernate.cfg.xml");
 
-
-        SessionFactory sessionFactory = cfg.buildSessionFactory ();
-
-
-        try {
-
-            Session session = sessionFactory.openSession ();
+        try(Session session = HibernateUtil.getHibernateSession ()) {
 
             Transaction tx = session.beginTransaction ();
 
@@ -36,9 +27,6 @@ public class App
 
             System.out.println ("Transaction successful!!!");
 
-        } finally {
-
-            sessionFactory.close ();
         }
     }
 }

@@ -1,14 +1,14 @@
 package com.techouts.entities;
 
-import com.techouts.utils.BaseEntityClass;
+import com.techouts.utils.logging.BaseHibernateLogger;
 import jakarta.persistence.*;
 
-import java.time.LocalDateTime;
+
 import java.util.List;
 
 @Entity
 @Table(name = "carts")
-public class Cart extends BaseEntityClass {
+public class Cart extends BaseHibernateLogger {
 
     @Id
     @GeneratedValue
@@ -18,7 +18,7 @@ public class Cart extends BaseEntityClass {
     @JoinColumn(name = "user_id")
     private User userId;
 
-    @OneToMany(mappedBy = "cartId")
+    @OneToMany(mappedBy = "cartId", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<CartItem> cartItemList;
 
     public int getId() {

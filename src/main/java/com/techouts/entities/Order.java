@@ -1,6 +1,6 @@
 package com.techouts.entities;
 
-import com.techouts.utils.BaseEntityClass;
+import com.techouts.utils.logging.BaseHibernateLogger;
 import com.techouts.utils.enums.PaymentType;
 import jakarta.persistence.*;
 import com.techouts.utils.enums.DeliveryStatus;
@@ -11,7 +11,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "orders")
-public class Order extends BaseEntityClass {
+public class Order extends BaseHibernateLogger {
 
     @Id
     @GeneratedValue
@@ -23,7 +23,7 @@ public class Order extends BaseEntityClass {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "delivery_status")
-    private DeliveryStatus deliveryStatus;
+    private DeliveryStatus deliveryStatus = DeliveryStatus.PROCESSING;
 
     @Column(name = "total_price")
     private float totalPrice;

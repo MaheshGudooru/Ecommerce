@@ -1,4 +1,4 @@
-package com.techouts.utils;
+package com.techouts.utils.logging;
 
 
 import jakarta.persistence.*;
@@ -8,7 +8,7 @@ import java.time.format.DateTimeFormatter;
 
 // the only reason I made this class is for logging purpose only I could have also used event listeners but this gets the job done
 @MappedSuperclass
-public class BaseEntityClass {
+public class BaseHibernateLogger {
 
     private void printLog(String s) {
         System.out.println ("Custom logger ==> " + LocalDateTime.now ().format (DateTimeFormatter.ofPattern ("dd-MMM-uuuu HH:mm:ss")) + ": " + s);

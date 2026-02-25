@@ -1,11 +1,11 @@
 package com.techouts.entities;
 
-import com.techouts.utils.BaseEntityClass;
+import com.techouts.utils.logging.BaseHibernateLogger;
 import jakarta.persistence.*;
 
 @Entity
 @Table(name = "order_items")
-public class OrderItem extends BaseEntityClass {
+public class OrderItem extends BaseHibernateLogger {
 
     @Id
     @GeneratedValue

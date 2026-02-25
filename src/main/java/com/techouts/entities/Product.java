@@ -1,12 +1,16 @@
 package com.techouts.entities;
 
-import com.techouts.utils.BaseEntityClass;
+import com.techouts.utils.logging.BaseHibernateLogger;
 import com.techouts.utils.enums.Category;
 import jakarta.persistence.*;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.Cache;
 
 @Entity
 @Table(name = "products")
-public class Product extends BaseEntityClass {
+@Cacheable
+@Cache (usage = CacheConcurrencyStrategy.READ_WRITE)
+public class Product extends BaseHibernateLogger {
 
     @Id
     @GeneratedValue

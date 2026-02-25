@@ -1,4 +1,18 @@
 package com.techouts.utils.hibernateutil;
 
-public class HibernateUtil {
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+
+public final class HibernateUtil {
+
+    private HibernateUtil(){}
+
+    private static SessionFactory sessionFactory = new Configuration ().configure ("hibernate.cfg.xml").buildSessionFactory ();
+
+    public static Session getHibernateSession() {
+
+        return sessionFactory.openSession ();
+    }
+
 }
