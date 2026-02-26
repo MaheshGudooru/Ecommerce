@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
+
     <!DOCTYPE html>
     <html lang="en">
 
@@ -7,7 +8,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Login - Lumina Store</title>
-        <link rel="stylesheet" href="../static/css/login.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/login.css">
     </head>
 
     <body>
@@ -17,7 +18,6 @@
                 <a href="index.html" class="logo">LUMINA</a>
                 <nav class="user-nav">
                     <a href="#">Help</a>
-                    <a href="index.html">Back to Shop</a>
                 </nav>
             </div>
         </header>
@@ -25,9 +25,9 @@
         <main class="auth-main">
             <div class="login-card">
                 <h1 class="login-title">Account Login</h1>
-                <p class="login-subtitle">Enter your credentials to access your orders.</p>
+                <p class="login-subtitle">${empty loginMessage ? 'Enter your credentials to access your orders.' : loginMessage}</p>
 
-                <form action="/login" method="POST">
+                <form action="${pageContext.request.contextPath}/login" method="POST">
                     <div class="form-group">
                         <label for="email">Email Address</label>
                         <input type="email" id="email" placeholder="name@example.com" name="email" required>
@@ -47,7 +47,7 @@
                 </form>
 
                 <div class="create-account">
-                    New to Lumina? <a href="register.html">Create an Account</a>
+                    New to Lumina? <a href="${pageContext.request.contextPath}/register">Create an Account</a>
                 </div>
             </div>
         </main>

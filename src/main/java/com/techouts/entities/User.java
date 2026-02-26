@@ -6,7 +6,6 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
 
-
 @Entity
 @Table(name = "users")
 public class User extends BaseHibernateLogger {
@@ -18,7 +17,7 @@ public class User extends BaseHibernateLogger {
     @Column(nullable = false)
     private String name;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String email;
 
     @Column(nullable = false)
@@ -31,11 +30,18 @@ public class User extends BaseHibernateLogger {
     @OneToOne(mappedBy = "userId", cascade = CascadeType.ALL)
     private Cart cart;
 
-    public User(){}
+    public User() {
+    }
 
     public User(String name, String email, String password) {
 
         this.name = name;
+        this.email = email;
+        this.password = password;
+    }
+
+    public User(String email, String password) {
+
         this.email = email;
         this.password = password;
     }
@@ -78,6 +84,14 @@ public class User extends BaseHibernateLogger {
 
     public void setJoinedDate(LocalDateTime joinedDate) {
         this.joinedDate = joinedDate;
+    }
+
+    public Cart getCart() {
+        return cart;
+    }
+
+    public void setCart(Cart cart) {
+        this.cart = cart;
     }
 
 }

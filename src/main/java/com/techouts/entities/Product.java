@@ -31,6 +31,19 @@ public class Product extends BaseHibernateLogger {
     @Column(name = "product_image")
     private String productImage;
 
+    public Product() {}
+
+    public Product(String name, float price, int stock, String productDescription, Category category, String productImage) {
+
+        this.name = name;
+        this.price = price;
+        this.stock = stock;
+        this.productDescription = productDescription;
+        this.category = category;
+        this.productImage = productImage;
+
+    }
+
     public int getId() {
         return id;
     }

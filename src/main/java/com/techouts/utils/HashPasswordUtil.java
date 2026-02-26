@@ -31,4 +31,34 @@ public final class HashPasswordUtil {
         return DBHashedPassword.equals (getHashedPassword (userInputPassword));
 
     }
+
+    public static boolean isValidPassword(String password) {
+
+        if(password.length() < 6) return false;
+
+        String specialChars = "!@#$%^&*";
+
+        boolean hasUpperCase = false;
+        boolean hasSpecialChar = false;
+        boolean hasNumber = false;
+
+        for(char c : password.toCharArray()) {
+
+            if(Character.isUpperCase(c)) {
+                hasUpperCase = true;
+            }
+
+            if(Character.isDigit(c)) {
+                hasNumber = true;
+            }
+
+            if(specialChars.contains(c + "")) {
+                hasSpecialChar = true;
+            }
+
+        }
+
+        return hasUpperCase && hasNumber && hasSpecialChar;
+
+    }
 }

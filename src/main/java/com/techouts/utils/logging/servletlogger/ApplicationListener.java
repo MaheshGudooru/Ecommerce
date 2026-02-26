@@ -7,6 +7,9 @@ import jakarta.servlet.annotation.WebListener;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+
+import com.techouts.utils.hibernateutil.HibernateUtil;
+
 @WebListener
 public class ApplicationListener implements ServletContextListener {
 
@@ -21,6 +24,8 @@ public class ApplicationListener implements ServletContextListener {
     }
 
     public void contextDestroyed(ServletContextEvent sce) {
+
+        HibernateUtil.shutdown();
 
         printLog ("SERVLET APPLICATION SHUTDOWN!!!!");
 

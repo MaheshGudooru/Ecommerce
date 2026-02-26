@@ -11,7 +11,7 @@ import java.time.format.DateTimeFormatter;
 public class BaseHibernateLogger {
 
     private void printLog(String s) {
-        System.out.println ("Custom logger ==> " + LocalDateTime.now ().format (DateTimeFormatter.ofPattern ("dd-MMM-uuuu HH:mm:ss")) + ": " + s);
+        System.out.println ("Hibernate logger ==> " + LocalDateTime.now ().format (DateTimeFormatter.ofPattern ("dd-MMM-uuuu HH:mm:ss")) + ": " + s);
     }
 
     @PrePersist
