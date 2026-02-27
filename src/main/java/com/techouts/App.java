@@ -4,7 +4,7 @@ import com.techouts.entities.Product;
 import com.techouts.utils.enums.Category;
 import com.techouts.utils.hibernateutil.HibernateUtil;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -14,42 +14,165 @@ public class App {
 
     public static void main(String[] args) {
 
-        List<Product> products = new ArrayList<>();
+        List<Product> products = Arrays.asList(
 
-        products.add(new Product("Smartphone X1", 699.99f, 50, "Latest smartphone with OLED display", Category.ELECTRONICS, "https://images.pexels.com/photos/1092671/pexels-photo-1092671.jpeg")); // phone :contentReference[oaicite:1]{index=1}
-        products.add(new Product("Laptop Pro 15", 1299.99f, 30, "High performance laptop for professionals", Category.ELECTRONICS, "https://images.pexels.com/photos/18105/pexels-photo.jpg")); // laptop :contentReference[oaicite:2]{index=2}
-        products.add(new Product("Wireless Headphones", 199.99f, 100, "Noise cancelling over-ear headphones", Category.ELECTRONICS, "https://images.pexels.com/photos/339465/pexels-photo-339465.jpeg")); // headphones :contentReference[oaicite:3]{index=3}
-        products.add(new Product("Fitness Tracker", 99.99f, 75, "Track your activity and sleep", Category.HEALTH_BEAUTY, "https://images.pexels.com/photos/266678/pexels-photo-266678.jpeg")); // fitness wearable :contentReference[oaicite:4]{index=4}
-        products.add(new Product("Smartwatch S3", 249.99f, 40, "Smartwatch with health monitoring", Category.ELECTRONICS, "https://images.pexels.com/photos/277406/pexels-photo-277406.jpeg")); // smartwatch :contentReference[oaicite:5]{index=5}
+                new Product("iPhone 15 Pro", 999.99f, 25,
+                        "Latest Apple smartphone with advanced camera system.",
+                        Category.ELECTRONICS,
+                        "https://images.unsplash.com/photo-1695048133142-1a20484a0c35"),
 
-        products.add(new Product("Cotton T-Shirt", 19.99f, 200, "Comfortable cotton t-shirt", Category.FASHION, "https://images.pexels.com/photos/428338/pexels-photo-428338.jpeg")); // clothes :contentReference[oaicite:6]{index=6}
-        products.add(new Product("Jeans Slim Fit", 49.99f, 120, "Stylish slim fit jeans", Category.FASHION, "https://images.pexels.com/photos/2983464/pexels-photo-2983464.jpeg")); // jeans :contentReference[oaicite:7]{index=7}
-        products.add(new Product("Leather Jacket", 199.99f, 25, "Premium leather jacket", Category.FASHION, "https://images.pexels.com/photos/994517/pexels-photo-994517.jpeg")); // jacket :contentReference[oaicite:8]{index=8}
+                new Product("Samsung 55\" 4K Smart TV", 699.99f, 18,
+                        "Ultra HD Smart LED TV with streaming apps.",
+                        Category.ELECTRONICS,
+                        "https://images.unsplash.com/photo-1593784991095-a205069470b6"),
 
-        products.add(new Product("Yoga Mat", 25.99f, 100, "Eco-friendly yoga mat", Category.SPORTS_OUTDOORS, "https://images.pexels.com/photos/4324025/pexels-photo-4324025.jpeg")); // yoga gear :contentReference[oaicite:9]{index=9}
-        products.add(new Product("Mountain Bike", 499.99f, 15, "Durable mountain bike for adventure", Category.SPORTS_OUTDOORS, "https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg")); // bike :contentReference[oaicite:10]{index=10}
+                new Product("Sony Wireless Headphones", 199.99f, 45,
+                        "Noise-cancelling over-ear Bluetooth headphones.",
+                        Category.ELECTRONICS,
+                        "https://images.unsplash.com/photo-1518444065439-e933c06ce9cd"),
 
-        products.add(new Product("Organic Honey", 12.99f, 150, "Pure organic honey", Category.GROCERIES, "https://images.pexels.com/photos/128321/pexels-photo-128321.jpeg")); // groceries :contentReference[oaicite:11]{index=11}
-        products.add(new Product("Coffee Beans 1kg", 24.99f, 80, "Premium roasted coffee beans", Category.GROCERIES, "https://images.pexels.com/photos/585750/pexels-photo-585750.jpeg")); // coffee :contentReference[oaicite:12]{index=12}
+                new Product("Gaming Laptop RTX 4060", 1299.99f, 10,
+                        "High-performance gaming laptop with RTX graphics.",
+                        Category.ELECTRONICS,
+                        "https://images.unsplash.com/photo-1517336714731-489689fd1ca8"),
 
-        products.add(new Product("Science Fiction Novel", 14.99f, 60, "Bestselling sci-fi novel", Category.BOOKS_MEDIA, "https://images.pexels.com/photos/46274/pexels-photo-46274.jpeg")); // books :contentReference[oaicite:13]{index=13}
-        products.add(new Product("Cookbook Deluxe", 29.99f, 40, "Delicious recipes from around the world", Category.BOOKS_MEDIA, "https://images.pexels.com/photos/590493/pexels-photo-590493.jpeg")); // cookbook :contentReference[oaicite:14]{index=14}
+                new Product("Men's Running Shoes", 79.99f, 60,
+                        "Lightweight breathable running shoes.",
+                        Category.FASHION,
+                        "https://images.unsplash.com/photo-1542291026-7eec264c27ff"),
 
-        products.add(new Product("Perfume Luxury", 79.99f, 35, "Premium fragrance for men and women", Category.HEALTH_BEAUTY, "https://images.pexels.com/photos/2362454/pexels-photo-2362454.jpeg")); // perfume :contentReference[oaicite:15]{index=15}
-        products.add(new Product("Hair Dryer Pro", 49.99f, 70, "Fast drying professional hair dryer", Category.HEALTH_BEAUTY, "https://images.pexels.com/photos/367986/pexels-photo-367986.jpeg")); // hair dryer :contentReference[oaicite:16]{index=16}
+                new Product("Women's Handbag", 59.99f, 35,
+                        "Stylish leather handbag for daily use.",
+                        Category.FASHION,
+                        "https://images.unsplash.com/photo-1584917865442-de89df76afd3"),
 
-        products.add(new Product("Desk Lamp LED", 34.99f, 50, "Adjustable LED desk lamp", Category.HOME_GARDEN, "https://images.pexels.com/photos/590493/pexels-photo-590493.jpeg")); // lamp (reuse) :contentReference[oaicite:17]{index=17}
-        products.add(new Product("Sneakers Running", 59.99f, 80, "Lightweight running sneakers", Category.FASHION, "https://images.pexels.com/photos/19090/pexels-photo.jpg")); // shoes :contentReference[oaicite:18]{index=18}
-        products.add(new Product("Kids Puzzle", 19.99f, 100, "Fun educational puzzle for kids", Category.TOYS_KIDS, "https://images.pexels.com/photos/1735480/pexels-photo-1735480.jpeg")); // toys :contentReference[oaicite:19]{index=19}
+                new Product("Men's Casual T-Shirt", 19.99f, 120,
+                        "Comfortable cotton casual t-shirt.",
+                        Category.FASHION,
+                        "https://images.unsplash.com/photo-1520975916090-3105956dac38"),
 
-        products.add(new Product("Misc Gadget", 9.99f, 200, "Useful everyday gadget", Category.OTHERS, "https://images.pexels.com/photos/1714208/pexels-photo-1714208.jpeg")); // miscellaneous :contentReference[oaicite:20]{index=20}
+                new Product("Air Fryer 5L", 89.99f, 30,
+                        "Healthy cooking air fryer.",
+                        Category.HOME_GARDEN,
+                        "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d"),
 
+                new Product("Wooden Dining Table", 399.99f, 8,
+                        "Solid wood dining table for 6 people.",
+                        Category.HOME_GARDEN,
+                        "https://images.unsplash.com/photo-1505691938895-1758d7feb511"),
+
+                new Product("Office Chair Ergonomic", 149.99f, 22,
+                        "Adjustable ergonomic office chair.",
+                        Category.HOME_GARDEN,
+                        "https://images.unsplash.com/photo-1580480055273-228ff5388ef8"),
+
+                new Product("Vitamin C Serum", 19.99f, 100,
+                        "Brightening skincare serum.",
+                        Category.HEALTH_BEAUTY,
+                        "https://images.unsplash.com/photo-1608248597279-f99d160bfcbc"),
+
+                new Product("Hair Dryer Professional", 39.99f, 55,
+                        "Fast-drying salon-quality hair dryer.",
+                        Category.HEALTH_BEAUTY,
+                        "https://images.unsplash.com/photo-1585238342028-4e7c1a0b1e66"),
+
+                new Product("Electric Toothbrush", 49.99f, 75,
+                        "Rechargeable electric toothbrush.",
+                        Category.HEALTH_BEAUTY,
+                        "https://images.unsplash.com/photo-1559599101-f09722fb4948"),
+
+                new Product("LEGO Classic Set", 39.99f, 60,
+                        "Creative building blocks set.",
+                        Category.TOYS_KIDS,
+                        "https://images.unsplash.com/photo-1587654780291-39c9404d746b"),
+
+                new Product("Remote Control Car", 29.99f, 90,
+                        "High-speed RC car for kids.",
+                        Category.TOYS_KIDS,
+                        "https://images.unsplash.com/photo-1596462502278-27bfdc403348"),
+
+                new Product("Barbie Doll", 24.99f, 70,
+                        "Classic Barbie doll with accessories.",
+                        Category.TOYS_KIDS,
+                        "https://images.unsplash.com/photo-1587300003388-59208cc962cb"),
+
+                new Product("Mountain Bike 29\"", 499.99f, 15,
+                        "Durable aluminum mountain bike.",
+                        Category.SPORTS_OUTDOORS,
+                        "https://images.unsplash.com/photo-1507035895480-2b3156c31fc8"),
+
+                new Product("Yoga Mat Premium", 29.99f, 70,
+                        "Eco-friendly non-slip yoga mat.",
+                        Category.SPORTS_OUTDOORS,
+                        "https://images.unsplash.com/photo-1599058917212-d750089bc07e"),
+
+                new Product("Football Size 5", 19.99f, 110,
+                        "Professional training football.",
+                        Category.SPORTS_OUTDOORS,
+                        "https://images.unsplash.com/photo-1517649763962-0c623066013b"),
+
+                new Product("Camping Tent 4-Person", 129.99f, 20,
+                        "Waterproof outdoor camping tent.",
+                        Category.SPORTS_OUTDOORS,
+                        "https://images.unsplash.com/photo-1504280390368-361c6d9f38f4"),
+
+                new Product("Organic Basmati Rice 5kg", 24.99f, 80,
+                        "Premium long-grain rice.",
+                        Category.GROCERIES,
+                        "https://images.unsplash.com/photo-1586201375761-83865001e17b"),
+
+                new Product("Arabica Coffee Beans 1kg", 18.99f, 95,
+                        "Fresh roasted premium coffee beans.",
+                        Category.GROCERIES,
+                        "https://images.unsplash.com/photo-1509042239860-f550ce710b93"),
+
+                new Product("Olive Oil Extra Virgin", 14.99f, 65,
+                        "Cold-pressed extra virgin olive oil.",
+                        Category.GROCERIES,
+                        "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5"),
+
+                new Product("Atomic Habits Book", 14.99f, 120,
+                        "Self-improvement bestseller.",
+                        Category.BOOKS_MEDIA,
+                        "https://images.unsplash.com/photo-1512820790803-83ca734da794"),
+
+                new Product("Noise Cancelling Earbuds", 89.99f, 50,
+                        "True wireless noise-cancelling earbuds.",
+                        Category.ELECTRONICS,
+                        "https://images.unsplash.com/photo-1585386959984-a4155224a1ad"),
+
+                new Product("Bluetooth Speaker", 59.99f, 50,
+                        "Portable waterproof speaker.",
+                        Category.ELECTRONICS,
+                        "https://images.unsplash.com/photo-1583225153295-dfa4c0c7d5c6"),
+
+                new Product("Cookware Set 10pcs", 119.99f, 25,
+                        "Non-stick cookware set.",
+                        Category.HOME_GARDEN,
+                        "https://images.unsplash.com/photo-1584990347449-ae0b3a3e2a13"),
+
+                new Product("Face Moisturizer Cream", 22.99f, 85,
+                        "Hydrating daily face cream.",
+                        Category.HEALTH_BEAUTY,
+                        "https://images.unsplash.com/photo-1556228453-efd6c1ff04f6"),
+
+                new Product("Children Story Book", 9.99f, 150,
+                        "Illustrated bedtime story book.",
+                        Category.BOOKS_MEDIA,
+                        "https://images.unsplash.com/photo-1544947950-fa07a98d237f"),
+
+                new Product("Fitness Dumbbell Set", 79.99f, 40,
+                        "Adjustable home gym dumbbells.",
+                        Category.SPORTS_OUTDOORS,
+                        "https://images.unsplash.com/photo-1599058945522-28d584b6f0ff")
+
+        );
 
         try (Session session = HibernateUtil.getHibernateSession()) {
 
             Transaction tx = session.beginTransaction();
 
-            for(Product product : products) {
+            for (Product product : products) {
                 session.persist(product);
             }
 

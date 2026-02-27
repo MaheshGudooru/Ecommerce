@@ -30,4 +30,22 @@ public class ProductDAO {
 
     }
 
+    public static Product getProductById(int id) {
+
+        try (Session session = HibernateUtil.getHibernateSession()) {
+
+            Product product = session.get(Product.class, id);
+
+            return product;
+            
+        } catch (Exception e) {
+            
+            System.err.println(e);
+
+        }
+
+        return null;
+
+    }
+
 }

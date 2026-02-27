@@ -11,7 +11,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 
-@WebFilter("/home/*")
+@WebFilter("/home")
 public class HomeFilter extends HttpFilter {
 
     @Override

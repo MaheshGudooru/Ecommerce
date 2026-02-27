@@ -41,7 +41,7 @@ public class Order extends BaseHibernateLogger {
     @Column(name = "delivery_address", nullable = false)
     private String address;
 
-    @OneToMany(mappedBy = "orderId")
+    @OneToMany(mappedBy = "orderId", orphanRemoval = true)
     private List<OrderItem> orderItems;
 
     public int getId() {

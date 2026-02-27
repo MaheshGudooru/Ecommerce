@@ -25,9 +25,17 @@ public class CartItem extends BaseHibernateLogger {
 
     private int quantity;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "product_id")
     private Product productId;
+
+    public CartItem() {}
+
+    public CartItem(Cart cartId, Product productId, int quantity) {
+        this.cartId = cartId;
+        this.productId = productId;
+        this.quantity = quantity;
+    }
 
     public int getId() {
         return id;

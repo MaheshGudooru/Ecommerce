@@ -27,7 +27,7 @@
                         <nav class="user-nav">
                             <a href="#">Account</a>
                             <a href="#">Orders</a>
-                            <a href="#">Cart (0)</a>
+                            <a href="${pageContext.request.contextPath}/cart">Cart</a>
                         </nav>
                     </div>
                 </header>
@@ -109,7 +109,7 @@
                                         <span class="category">${product.category}</span>
                                         <h3>${product.name}</h3>
                                         <span class="price">$${product.price}</span>
-                                        <form action="cart" method="post">
+                                        <form class="add-item-to-cart">
                                             <input type="hidden" name="productId" value="${product.id}">
                                             <button type="submit" class="btn-secondary">Add to Cart</button>
                                         </form>
@@ -128,6 +128,33 @@
                     </div>
                 </footer>
 
+                <script>
+                    document.querySelectorAll('.add-item-to-cart').forEach(form => {
+                        form.addEventListener('submit', function (e) {
+                            e.preventDefault();
+
+                            const formData = new FormData(this);
+                            const params = new URLSearchParams(formData).toString();
+
+                            fetch('${pageContext.request.contextPath}/cart/add', {
+                                method: 'POST',
+                                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                                body: params
+                            })
+                                .then(response => response.text())
+                                .then(status => {
+                                    if (status === 'success') {
+                                        alert('Product added to cart!');
+                                    } else {
+                                        alert('Failed to add product.');
+                                    }
+                                })
+                                .catch(err => console.error(err));
+                        });
+                    });
+                </script>
+
             </body>
+
 
             </html>

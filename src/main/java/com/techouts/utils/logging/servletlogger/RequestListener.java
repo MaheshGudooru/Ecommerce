@@ -28,6 +28,8 @@ public class RequestListener implements ServletRequestListener {
             printLog("LOGIN REQUEST RECEIVED....");
         } else if (url.contains("/register")) {
             printLog("REGISTER REQUEST RECEIVED....");
+        } else if (url.contains("/cart")) {
+            printLog("CART REQUEST RECEIVED....");
         } else {
             printLog("UNKNOWN REQUEST RECEIVED....");
         }
@@ -46,6 +48,8 @@ public class RequestListener implements ServletRequestListener {
             printLog("LOGIN REQUEST DESTROYED....");
         } else if (url.contains("/register")) {
             printLog("REGISTER REQUEST DESTROYED....");
+        } else if (url.contains("/cart")) {
+            printLog("CART REQUEST DESTROYED....");
         } else {
             printLog("UNKNOWN REQUEST DESTROYED....");
         }
