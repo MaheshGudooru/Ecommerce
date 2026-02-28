@@ -14,7 +14,21 @@ import com.techouts.utils.hibernateutil.HibernateUtil;
 
 public class CartDAO {
 
-    private static final String getUserCartHql = "FROM Cart WHERE userId = :user";
+    public static final String getUserCartHql = "FROM Cart WHERE userId = :user";
+
+    public static Cart getCartByUser(User user) {
+
+        try (Session session = HibernateUtil.getHibernateSession()) {
+            Cart userCart = session.createQuery(getUserCartHql, Cart.class)
+                    .setParameter("user", user).getSingleResult();
+
+            return userCart;        
+        } catch (Exception e) {
+            System.err.println(e);
+        }
+
+        return null;
+    }
 
     public static boolean addProductToUser(User user, int productId) {
 
@@ -60,7 +74,8 @@ public class CartDAO {
             return true;
 
         } catch (Exception e) {
-            if(tx != null) tx.rollback();
+            if (tx != null)
+                tx.rollback();
             e.printStackTrace();
         }
 
@@ -131,13 +146,13 @@ public class CartDAO {
     }
 
     public static boolean decreaseCartItemQuantity(User user, int cartItemId) {
-        
+
         return changeCartItemQuantity(user, cartItemId, false);
 
     }
 
     public static boolean increaseCartItemQuantity(User user, int cartItemId) {
-        
+
         return changeCartItemQuantity(user, cartItemId, true);
 
     }
@@ -170,7 +185,7 @@ public class CartDAO {
                 session.merge(itemForUpdation);
             } else {
                 itemForUpdation.setQuantity(itemForUpdation.getQuantity() - 1);
-                if(itemForUpdation.getQuantity() <= 0) {
+                if (itemForUpdation.getQuantity() <= 0) {
                     cartItems.remove(itemForUpdation);
                 } else {
                     session.merge(itemForUpdation);

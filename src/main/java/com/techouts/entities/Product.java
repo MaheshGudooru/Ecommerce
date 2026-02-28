@@ -20,7 +20,6 @@ public class Product extends BaseHibernateLogger {
 
     private float price;
 
-    private int stock;
 
     @Column(name = "product_description")
     private String productDescription;
@@ -33,11 +32,10 @@ public class Product extends BaseHibernateLogger {
 
     public Product() {}
 
-    public Product(String name, float price, int stock, String productDescription, Category category, String productImage) {
+    public Product(String name, float price, String productDescription, Category category, String productImage) {
 
         this.name = name;
         this.price = price;
-        this.stock = stock;
         this.productDescription = productDescription;
         this.category = category;
         this.productImage = productImage;
@@ -66,14 +64,6 @@ public class Product extends BaseHibernateLogger {
 
     public void setPrice(float price) {
         this.price = price;
-    }
-
-    public int getStock() {
-        return stock;
-    }
-
-    public void setStock(int stock) {
-        this.stock = stock;
     }
 
     public String getProductDescription() {

@@ -55,8 +55,9 @@ public class UserDAO {
             return true;
 
         } catch (Exception e) {
-            
-            tx.rollback();
+
+            if (tx != null)
+                tx.rollback();
             System.err.println("Cannot persist user to DB");
             e.printStackTrace();
 

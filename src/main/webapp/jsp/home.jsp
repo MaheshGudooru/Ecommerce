@@ -17,7 +17,7 @@
                 <!-- HEADER -->
                 <header class="site-header">
                     <div class="container header-content">
-                        <a href="#" class="logo">LUMINA</a>
+                        <a href="${pageContext.request.contextPath}/home" class="logo">LUMINA</a>
 
                         <div class="search-bar">
                             <input type="text" placeholder="Search for anything...">
@@ -25,8 +25,8 @@
                         </div>
 
                         <nav class="user-nav">
-                            <a href="#">Account</a>
-                            <a href="#">Orders</a>
+                            <a href="${pageContext.request.contextPath}/user">Account</a>
+                            <a href="${pageContext.request.contextPath}/order">Orders</a>
                             <a href="${pageContext.request.contextPath}/cart">Cart</a>
                         </nav>
                     </div>
@@ -107,7 +107,7 @@
                                     </div>
                                     <div class="product-info">
                                         <span class="category">${product.category}</span>
-                                        <h3>${product.name}</h3>
+                                        <h3><a href="${pageContext.request.contextPath}/product?id=${product.id}">${product.name}</a></h3>
                                         <span class="price">$${product.price}</span>
                                         <form class="add-item-to-cart">
                                             <input type="hidden" name="productId" value="${product.id}">

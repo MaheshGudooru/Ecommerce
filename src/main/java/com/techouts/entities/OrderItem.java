@@ -23,7 +23,18 @@ public class OrderItem extends BaseHibernateLogger {
     private int quantity;
 
     @Column(name = "purchased_price")
-    private int purchasedPrice;
+    private float purchasedPrice;
+
+    public OrderItem() {}
+
+    public OrderItem(Product productId, Order orderId, int quantity, float purchasedPrice) {
+
+        this.productId = productId;
+        this.orderId = orderId;
+        this.quantity = quantity;
+        this.purchasedPrice = purchasedPrice;
+
+    }
 
     public int getId() {
         return id;
@@ -57,11 +68,11 @@ public class OrderItem extends BaseHibernateLogger {
         this.quantity = quantity;
     }
 
-    public int getPurchasedPrice() {
+    public float getPurchasedPrice() {
         return purchasedPrice;
     }
 
-    public void setPurchasedPrice(int purchasedPrice) {
+    public void setPurchasedPrice(float purchasedPrice) {
         this.purchasedPrice = purchasedPrice;
     }
 }

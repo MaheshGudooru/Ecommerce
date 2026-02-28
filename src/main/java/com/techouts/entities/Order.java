@@ -1,12 +1,12 @@
 package com.techouts.entities;
 
 import com.techouts.utils.logging.BaseHibernateLogger;
-import com.techouts.utils.enums.PaymentType;
 import jakarta.persistence.*;
 import com.techouts.utils.enums.DeliveryStatus;
 
 import java.time.LocalDate;
 import java.util.List;
+
 
 
 @Entity
@@ -31,18 +31,32 @@ public class Order extends BaseHibernateLogger {
     @Column(name = "delivery_date")
     private LocalDate estimatedDeliveryDate;
 
+  
     @Column(name = "ordered_date")
     private LocalDate orderedDate;
 
-    @Enumerated(EnumType.STRING)
+    
     @Column(name = "payment_type")
-    private PaymentType paymentType;
+    private String paymentType;
 
     @Column(name = "delivery_address", nullable = false)
     private String address;
 
-    @OneToMany(mappedBy = "orderId", orphanRemoval = true)
+    @OneToMany(mappedBy = "orderId", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<OrderItem> orderItems;
+
+    public Order() {}
+
+    public Order(User userId, float totalPrice, LocalDate estimatedDeliveryDate, String paymentType, String address) {
+
+        this.userId = userId;
+        this.totalPrice = totalPrice;
+        this.estimatedDeliveryDate = estimatedDeliveryDate;
+        this.paymentType = paymentType;
+        this.address = address;
+        this.orderedDate = LocalDate.now();
+
+    }
 
     public int getId() {
         return id;
@@ -60,11 +74,11 @@ public class Order extends BaseHibernateLogger {
         this.userId = userId;
     }
 
-    public DeliveryStatus getStatus() {
+    public DeliveryStatus getDeliveryStatus() {
         return deliveryStatus;
     }
 
-    public void setStatus(DeliveryStatus status) {
+    public void setDeliveryStatus(DeliveryStatus status) {
         this.deliveryStatus = status;
     }
 
@@ -90,14 +104,6 @@ public class Order extends BaseHibernateLogger {
 
     public void setOrderedDate(LocalDate orderedDate) {
         this.orderedDate = orderedDate;
-    }
-
-    public PaymentType getPaymentType() {
-        return paymentType;
-    }
-
-    public void setPaymentType(PaymentType paymentType) {
-        this.paymentType = paymentType;
     }
 
     public String getAddress() {

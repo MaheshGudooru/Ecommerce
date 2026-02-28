@@ -48,6 +48,7 @@ public class LoginServlet extends HttpServlet {
 
         HttpSession session = req.getSession();
         session.setAttribute("user", user);
+        session.setAttribute("userCart", session);
 
         resp.sendRedirect(req.getContextPath() + "/home");
 

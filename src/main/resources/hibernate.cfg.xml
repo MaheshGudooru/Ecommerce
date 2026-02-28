@@ -12,8 +12,8 @@
 
         <!-- printing SQL queries to console -->
         <property name="hibernate.show_sql">true</property>
-        <property name="hibernate.format_sql">true</property>
-        <property name="use_sql_comments">true</property>
+        <!-- <property name="hibernate.format_sql">true</property> -->
+        <!-- <property name="use_sql_comments">true</property> -->
 
         <!-- create or update schema at startup -->
         <property name="hibernate.hbm2ddl.auto">update</property>
@@ -23,7 +23,7 @@
         <property name="hibernate.cache.use_query_cache">true</property>
         <property name="hibernate.cache.region.factory_class">org.hibernate.cache.jcache.JCacheRegionFactory</property>
         <property name="hibernate.javax.cache.provider">com.github.benmanes.caffeine.jcache.spi.CaffeineCachingProvider</property>
-        <property name="hibernate.generate_statistics">true</property>
+        <!-- <property name="hibernate.generate_statistics">true</property> -->
 
 
         <!-- Mapping entities -->
