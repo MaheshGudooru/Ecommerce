@@ -21,9 +21,11 @@ public class CartDAO {
         if (user == null)
             return false;
 
+        Transaction tx = null;
+
         try (Session session = HibernateUtil.getHibernateSession()) {
 
-            Transaction tx = session.beginTransaction();
+            tx = session.beginTransaction();
 
             Cart userCart = session.createQuery(getUserCartHql, Cart.class)
                     .setParameter("user", user).getSingleResult();
@@ -55,12 +57,11 @@ public class CartDAO {
             session.merge(currCartItem);
             tx.commit();
 
-            System.out.println(cartItems);
-
             return true;
 
         } catch (Exception e) {
-            System.err.println(e);
+            if(tx != null) tx.rollback();
+            e.printStackTrace();
         }
 
         return false;
@@ -118,7 +119,6 @@ public class CartDAO {
                                                                 // commited
 
             tx.commit();
-            System.out.println(true);
             return true;
 
         } catch (Exception e) {

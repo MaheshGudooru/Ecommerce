@@ -54,7 +54,7 @@
                                                 <input type="hidden" name="CartItemId" value="${cartItem.id}">
                                                 <button type="submit" class="qty-btn plus">+</button>
                                             </form>
-                                            
+
                                         </div>
                                         <form class="remove-item-from-cart">
                                             <input type="hidden" name="CartItemId" value="${cartItem.id}">
@@ -96,12 +96,10 @@
                             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                             body: params
                         })
-                            .then(response => response.text())
-                            .then(status => {
-                                if (status === 'success') {
-                                    alert('Product removed from cart!');
-                                } else {
-                                    alert('Failed to remove from product.');
+
+                            .then(response => {
+                                if (response.ok) {
+                                    location.reload();
                                 }
                             })
                             .catch(err => console.error(err));
@@ -119,12 +117,9 @@
                             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                             body: params
                         })
-                            .then(response => response.text())
-                            .then(status => {
-                                if (status === 'success') {
-                                    console.log('Product quantity reduced successfully!');
-                                } else {
-                                    console.log('Failed to reduce product quantity product.');
+                            .then(response => {
+                                if (response.ok) {
+                                    location.reload();
                                 }
                             })
                             .catch(err => console.error(err));
@@ -141,15 +136,11 @@
                             method: 'POST',
                             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                             body: params
+                        }).then(response => {
+                            if (response.ok) {
+                                location.reload();
+                            }
                         })
-                            .then(response => response.text())
-                            .then(status => {
-                                if (status === 'success') {
-                                    console.log('Product quantity reduced successfully!');
-                                } else {
-                                    console.log('Failed to reduce product quantity product.');
-                                }
-                            })
                             .catch(err => console.error(err));
                     });
                 });

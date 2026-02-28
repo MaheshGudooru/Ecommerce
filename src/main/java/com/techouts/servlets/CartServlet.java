@@ -23,9 +23,9 @@ public class CartServlet extends HttpServlet {
 
         boolean productInsertionStatus = CartDAO.addProductToUser((User) req.getSession(false).getAttribute("user"),
                 productId);
-
+        System.out.println(productInsertionStatus);
         resp.setContentType("text/plain");
-        resp.getWriter().write(productInsertionStatus ? "success" : "fail");
+        resp.getWriter().write(productInsertionStatus ? "success" : "failed");
 
     }
 
@@ -34,32 +34,28 @@ public class CartServlet extends HttpServlet {
 
         System.out.println(req.getParameter("CartItemId"));
         int cartItemId = Integer.parseInt(req.getParameter("CartItemId"));
-
-        boolean cartItemDeletionStatus = CartDAO.removeCartItem((User) req.getSession().getAttribute("user"),
+        CartDAO.removeCartItem((User) req.getSession().getAttribute("user"),
                 cartItemId);
-        resp.setContentType("text/plain");
-        resp.getWriter().write(cartItemDeletionStatus ? "success" : "fail");
 
     }
 
     private void decreaseProductQuantity(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         System.out.println(req.getParameter("CartItemId"));
         int cartItemId = Integer.parseInt(req.getParameter("CartItemId"));
-
-        boolean cartItemQuantityUpdationStatus = CartDAO.decreaseCartItemQuantity((User) req.getSession().getAttribute("user"),
+        CartDAO.decreaseCartItemQuantity(
+                (User) req.getSession().getAttribute("user"),
                 cartItemId);
-        resp.setContentType("text/plain");
-        resp.getWriter().write(cartItemQuantityUpdationStatus ? "success" : "fail");
+
     }
 
     private void increaseProductQuantity(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         System.out.println(req.getParameter("CartItemId"));
         int cartItemId = Integer.parseInt(req.getParameter("CartItemId"));
 
-        boolean cartItemQuantityUpdationStatus = CartDAO.increaseCartItemQuantity((User) req.getSession().getAttribute("user"),
+        CartDAO.increaseCartItemQuantity(
+                (User) req.getSession().getAttribute("user"),
                 cartItemId);
-        resp.setContentType("text/plain");
-        resp.getWriter().write(cartItemQuantityUpdationStatus ? "success" : "fail");
+
     }
 
     @Override
@@ -80,12 +76,16 @@ public class CartServlet extends HttpServlet {
         System.out.println(path);
 
         switch (path) {
-            case "/add" -> addProductToCartItem(req, resp);
+            case "/add" -> {
+                addProductToCartItem(req, resp);
+                return;
+            }    
             case "/remove" -> removeProductCartItem(req, resp);
             case "/decreasecnt" -> decreaseProductQuantity(req, resp);
             case "/increasecnt" -> increaseProductQuantity(req, resp);
-            default -> resp.sendRedirect(req.getContextPath() + "/cart");
         }
+
+        resp.sendRedirect(req.getContextPath() + "/cart");
 
     }
 
