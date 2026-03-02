@@ -35,6 +35,8 @@ public class RequestListener implements ServletRequestListener {
             printLog("ORDER REQUEST RECEIVED....");
         } else if (url.contains("/profile")) {
             printLog("PROFILE REQUEST RECEIVED....");
+        } else if (url.contains("/admin")) {
+            printLog("ADMIN REQUEST RECEIVED....");
         } else {
             printLog("UNKNOWN REQUEST RECEIVED....");
         }
@@ -60,6 +62,8 @@ public class RequestListener implements ServletRequestListener {
             printLog("ORDER REQUEST DESTROYED....");
         } else if (url.contains("/profile")) {
             printLog("PROFILE REQUEST DESTROYED....");
+        } else if (url.contains("/admin")) {
+            printLog("ADMIN REQUEST DESTROYED....");
         } else {
             printLog("UNKNOWN REQUEST DESTROYED....");
         }

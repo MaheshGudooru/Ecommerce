@@ -42,6 +42,7 @@ public class AdminFilter extends HttpFilter {
         if(!"admin".equals(adminInQuestion.getName().toLowerCase()) || !HashPasswordUtil.getHashedPassword("Admin@123").equals(adminInQuestion.getPassword())) {
 
             res.sendRedirect(req.getContextPath() + "/home");
+            return;
 
         }
 

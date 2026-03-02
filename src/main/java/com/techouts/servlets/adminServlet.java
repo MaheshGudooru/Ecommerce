@@ -12,7 +12,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("/admin/*")
+@WebServlet(urlPatterns = {"/admin/*", "/admin"})
 public class adminServlet extends HttpServlet {
 
     private void diplayAllProducts(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
