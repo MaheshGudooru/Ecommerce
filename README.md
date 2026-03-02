@@ -2,7 +2,12 @@
 
 A full-featured e-commerce web application built with Java, Hibernate ORM, and JSP.
 
-<img src = "./image.png"></img>
+<img src = "./scrshots/home.png"></img>
+<img src = "./scrshots/product.png"></img>
+<img src = "./scrshots/productDesc.png"></img>
+<img src = "./scrshots/cart.png"></img>
+<img src = "./scrshots/order.png"></img>
+<img src = "./scrshots/account.png"></img>
 
 ## Features
 
