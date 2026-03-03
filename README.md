@@ -2,6 +2,8 @@
 
 A full-featured e-commerce web application built with Java, Hibernate ORM, and JSP.
 
+### [Demo Video](https://techouts2-my.sharepoint.com/:v:/g/personal/mahesh_g_techouts_co_in/IQBuknrJi2fQQZgO1HKZDFzmAXEcSz59e0h9IpFPbTmBNF4?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=ohKskB)
+
 <img src = "./scrshots/home.png"></img>
 <img src = "./scrshots/product.png"></img>
 <img src = "./scrshots/productDesc.png"></img>
